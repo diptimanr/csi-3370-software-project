@@ -39,6 +39,12 @@ dependencies {
 
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(22)
+    }
+}
+
 application {
     // Define the main class for the application.
     mainClassName = 'edu.oakland.production.admin.Main'
@@ -60,9 +66,9 @@ test {
 jacocoTestReport {
     // tests are required to run before generating the report
     dependsOn test
-    reports {
-        xml.enabled true
-    }
+    // reports {
+    //     xml.enabled true
+    // }
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
             fileTree(dir: it, exclude: ['edu/oakland/production/admin/Main.class'])
